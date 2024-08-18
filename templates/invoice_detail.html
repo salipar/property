@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Details</title>
+</head>
+<body>
+    <h1>Invoice {{ invoice['invoice_number'] }}</h1>
+    <p>Customer: {{ invoice['customer_name'] }}</p>
+    <p>Date: {{ invoice['invoice_date'] }}</p>
+
+    <h2>Details</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detail in details %}
+            <tr>
+                <td>{{ detail['product_name'] }}</td>
+                <td>{{ detail['quantity'] }}</td>
+                <td>{{ detail['price'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><a href="{{ url_for('index') }}">Back to Invoices</a></p>
+</body>
+</html>
